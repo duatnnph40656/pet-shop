@@ -23,7 +23,7 @@ public class Table extends JTable {
             @Override
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
                 TableHeader header = new TableHeader(o + "");
-                if (i1 == 4) {
+                if (i1 == jtable.getColumnCount() - 1) {
                     header.setHorizontalAlignment(JLabel.CENTER);
                 }
                 return header;
@@ -32,9 +32,9 @@ public class Table extends JTable {
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean selected, boolean focus, int i, int i1) {
-                if (o instanceof ModelProfile) {
-                    ModelProfile data = (ModelProfile) o;
-                    Profile cell = new Profile(data);
+                if (o instanceof ModelImage) {
+                    ModelImage data = (ModelImage) o;
+                    Image cell = new Image(data);
                     if (selected) {
                         cell.setBackground(new Color(239, 244, 255));
                     } else {
@@ -68,7 +68,8 @@ public class Table extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 4) {
+        // Automatically select the last column
+        if (col == getColumnCount() - 1) {
             return new TableCellAction();
         } else {
             return super.getCellEditor(row, col);

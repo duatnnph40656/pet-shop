@@ -41,7 +41,7 @@ public class TextFieldSuggestionUI extends MetalTextFieldUI {
 
     public TextFieldSuggestionUI(JTextField textfield) {
         this.textfield = textfield;
-        border = new Border(10);
+        border = new Border(15);
         border.setRound(round);
         textfield.setBorder(border);
         textfield.setOpaque(false);

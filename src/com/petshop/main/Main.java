@@ -4,12 +4,19 @@ import com.petshop.component.Header;
 import com.petshop.component.Menu;
 import com.petshop.event.EventMenuSelected;
 import com.petshop.event.EventShowPopupMenu;
+import com.petshop.form.AccountManagement;
+import com.petshop.form.CustomerManagement;
+import com.petshop.form.Dashboard;
+import com.petshop.form.DiscountVoucherManagement;
+import com.petshop.form.EmployeeManagement;
+import com.petshop.form.InvoiceManagement;
 import com.petshop.form.MainForm;
-import com.petshop.form.BanHang;
-import com.petshop.form.DichVu;
-import com.petshop.form.KhachHang;
-import com.petshop.form.NhanVien;
-import com.petshop.form.SanPham;
+import com.petshop.form.PetManagement;
+import com.petshop.form.ProductManagement;
+import com.petshop.form.ReturnManagement;
+import com.petshop.form.ServiceManagerment;
+import com.petshop.form.Shop;
+import com.petshop.models.Employee;
 import com.petshop.swing.MenuItem;
 import com.petshop.swing.PopupMenu;
 import com.petshop.swing.icon.GoogleMaterialDesignIcons;
@@ -17,6 +24,9 @@ import com.petshop.swing.icon.IconFontSwing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -48,19 +58,34 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
+                    main.showForm(new Dashboard());
                 } else if (menuIndex == 1) {
-                    main.showForm(new BanHang());
-                } else if (menuIndex == 2){
-                    main.showForm(new SanPham());
-                } else if (menuIndex == 3){
-                    main.showForm(new DichVu());
-                } else if (menuIndex == 4){
-                    main.showForm(new NhanVien());
-                } else if (menuIndex == 5){
-                    main.showForm(new KhachHang());
-                } else if (menuIndex == 6){
-                    main.showForm(new login());
-                } 
+                    main.showForm(new Shop());
+                } else if (menuIndex == 2) {
+                    main.showForm(new ProductManagement());
+                } else if (menuIndex == 3) {
+                    main.showForm(new ServiceManagerment());
+                } else if (menuIndex == 4) {
+                    main.showForm(new PetManagement());
+                } else if (menuIndex == 5) {
+                    main.showForm(new EmployeeManagement());
+                } else if (menuIndex == 6) {
+                    main.showForm(new CustomerManagement());
+                } else if (menuIndex == 7) {
+                    main.showForm(new InvoiceManagement());
+                } else if (menuIndex == 8) {
+                    main.showForm(new ReturnManagement());
+                } else if (menuIndex == 9) {
+                    main.showForm(new AccountManagement());
+                } else if (menuIndex == 10) {
+                    main.showForm(new DiscountVoucherManagement());
+                } else if (menuIndex == 11) {
+                    dispose();
+                    login login = new login();
+                    login.setVisible(true);
+                } else if (menuIndex == 12) {
+
+                }
             }
         });
         menu.addEventShowPopup(new EventShowPopupMenu() {
@@ -117,7 +142,11 @@ public class Main extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-//        main.showForm(new ThongKe());
+        main.showForm(new Dashboard());
+    }
+
+    public Header getHeader() {
+        return header; // Phương thức để lấy đối tượng Header
     }
 
     @SuppressWarnings("unchecked")
@@ -128,30 +157,33 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1350, 770));
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
+        bg.setMaximumSize(new java.awt.Dimension(1300, 751));
         bg.setOpaque(true);
+        bg.setPreferredSize(new java.awt.Dimension(1300, 751));
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1300, Short.MAX_VALUE)
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 751, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

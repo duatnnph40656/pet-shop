@@ -10,6 +10,12 @@ public class Header extends javax.swing.JPanel {
 
     public void addMenuEvent(ActionListener event) {
         cmdMenu.addActionListener(event);
+        lbUserName.setText("");
+
+    }
+
+    public void setUserName(String username) {
+        lbUserName.setText(username);
     }
 
     @SuppressWarnings("unchecked")

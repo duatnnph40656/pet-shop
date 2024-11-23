@@ -56,13 +56,17 @@ public class Menu extends javax.swing.JPanel {
 
     public void initMenuItem() {
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/1.png")), "Dashboard"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/2.png")), "Oder"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/2.png")), "Order"));
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/3.png")), "Products"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/4.png")), "Service"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/5.png")), "Staff"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/6.png")), "Customer"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/7.png")), "Profile"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/8.png")), "Log out"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/4.png")), "Pet Services"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/13.png")), "Pets"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/5.png")), "Employees"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/6.png")), "Customers"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/10.png")), "Invoice"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/11.png")), "Returns"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/12.png")), "Accounts"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/9.png")), "Discount Vouchers"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/petshop/icon/8.png")), "Logout"));
     }
 
     private void addMenu(ModelMenu menu) {
